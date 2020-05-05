@@ -7,6 +7,7 @@ from flask import (
 from werkzeug.utils import secure_filename
 import os
 import random
+from predict import make_prediction
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
@@ -58,7 +59,10 @@ def generate_filenames(filename):
 
 @app.route('/predict/<filename>', methods=['GET'])
 def predict(filename):
-    return render_template('predict.html')
+    image_url = url_for("images", filename=filename)
+    image_file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+    prediction =  make_prediction('./trashnet.pt', image_file_path)
+    return render_template('predict.html', image_url=image_url, prediction=prediction)
 
 @app.route("/images/<filename>", methods=['GET'])   
 def images(filename):
