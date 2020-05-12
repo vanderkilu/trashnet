@@ -22,3 +22,19 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
+
+app/node_modules/**/*
+node_modules/**/*
+app/.expo/*
+app/npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+app/web-build/
+app/web-report/
+
+# macOS
+app/.DS_Store
