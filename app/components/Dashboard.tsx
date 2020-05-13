@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 100,
+    marginTop: 80,
     justifyContent: "center",
     alignItems: "center",
     padding: 20
