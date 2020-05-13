@@ -11,17 +11,7 @@ const Dashboard: React.FC<{}> = () => {
     { name: "trash", count: 60, backgroundColor: "#FEA499" }
   ];
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        flexWrap: "wrap",
-        marginTop: 100,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 20
-      }}
-    >
+    <View style={styles.container}>
       {items.map((item, i) => (
         <View
           style={{
@@ -31,25 +21,8 @@ const Dashboard: React.FC<{}> = () => {
           key={i}
         >
           <View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: "#ffffff",
-                textTransform: "uppercase"
-              }}
-            >
-              {item.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: 14,
-                textAlign: "center",
-                color: "#ffffff",
-                fontWeight: "bold"
-              }}
-            >
-              {item.count}
-            </Text>
+            <Text style={styles.mainText}>{item.name}</Text>
+            <Text style={styles.subText}>{item.count}</Text>
           </View>
         </View>
       ))}
@@ -61,6 +34,26 @@ const Dashboard: React.FC<{}> = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20
+  },
+  mainText: {
+    fontSize: 16,
+    color: "#ffffff",
+    textTransform: "uppercase"
+  },
+  subText: {
+    fontSize: 14,
+    textAlign: "center",
+    color: "#ffffff",
+    fontWeight: "bold"
+  },
   item: {
     flexBasis: "30%",
     backgroundColor: "#a2edff",

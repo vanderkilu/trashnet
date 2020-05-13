@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
 
 type ParamList = {
@@ -13,32 +13,9 @@ type SplashScreenProps = {
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ navigation }) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <Text
-        style={{
-          fontSize: 30,
-          fontWeight: "bold",
-          justifyContent: "center"
-        }}
-      >
-        TRASHNET
-      </Text>
-      <TouchableOpacity
-        style={{
-          width: 150,
-          padding: 10,
-          borderRadius: 5,
-          marginTop: 50,
-          shadowOpacity: 0.2,
-          backgroundColor: "#41ded2"
-        }}
-      >
+    <View style={styles.container}>
+      <Text style={styles.headerText}>TRASHNET</Text>
+      <TouchableOpacity style={styles.button}>
         <Text
           style={{ textAlign: "center", color: "#ffffff" }}
           onPress={() => navigation.navigate("Dashboard")}
@@ -49,5 +26,26 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ navigation }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  headerText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    justifyContent: "center"
+  },
+  button: {
+    width: 150,
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 50,
+    shadowOpacity: 0.2,
+    backgroundColor: "#41ded2"
+  }
+});
 
 export default SplashScreen;
