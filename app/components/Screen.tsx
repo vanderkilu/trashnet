@@ -5,6 +5,7 @@ import { NavigationProp } from "@react-navigation/native";
 type ParamList = {
   Dashboard: undefined;
   Screen: undefined;
+  CameraView: undefined;
 };
 
 type SplashScreenProps = {

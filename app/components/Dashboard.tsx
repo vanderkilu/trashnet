@@ -1,7 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { NavigationProp } from "@react-navigation/native";
 
-const Dashboard: React.FC<{}> = () => {
+type ParamList = {
+  Dashboard: undefined;
+  Screen: undefined;
+  CameraView: undefined;
+};
+
+type DashboardProp = {
+  navigation: NavigationProp<ParamList, "Dashboard">;
+};
+
+const Dashboard: React.FC<DashboardProp> = ({ navigation }) => {
   const items = [
     { name: "cardboard", count: 10, backgroundColor: "#a2edff" },
     { name: "metal", count: 20, backgroundColor: "#ECA3D0" },
@@ -26,9 +37,12 @@ const Dashboard: React.FC<{}> = () => {
           </View>
         </View>
       ))}
-      <View style={styles.cameraContainer}>
+      <TouchableOpacity
+        style={styles.cameraContainer}
+        onPress={() => navigation.navigate("CameraView")}
+      >
         <Image source={require("../assets/camera.png")} style={styles.image} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
