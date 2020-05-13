@@ -1,7 +1,17 @@
 import React from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { NavigationProp } from "@react-navigation/native";
 
-const SplashScreen: React.FC<{}> = () => {
+type ParamList = {
+  Dashboard: undefined;
+  Screen: undefined;
+};
+
+type SplashScreenProps = {
+  navigation: NavigationProp<ParamList, "Screen">;
+};
+
+const SplashScreen: React.FC<SplashScreenProps> = ({ navigation }) => {
   return (
     <View
       style={{
@@ -29,7 +39,10 @@ const SplashScreen: React.FC<{}> = () => {
           backgroundColor: "#41ded2"
         }}
       >
-        <Text style={{ textAlign: "center", color: "#ffffff" }}>
+        <Text
+          style={{ textAlign: "center", color: "#ffffff" }}
+          onPress={() => navigation.navigate("Dashboard")}
+        >
           Tap to begin
         </Text>
       </TouchableOpacity>

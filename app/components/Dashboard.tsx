@@ -11,57 +11,52 @@ const Dashboard: React.FC<{}> = () => {
     { name: "trash", count: 60, backgroundColor: "#FEA499" }
   ];
   return (
-    <>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginTop: 100,
-          justifyContent: "center",
-          alignItems: "center",
-          padding: 20
-        }}
-      >
-        {items.map((item, i) => (
-          <View
-            style={{
-              ...styles.item,
-              ...{ backgroundColor: item.backgroundColor }
-            }}
-            key={i}
-          >
-            <View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: "#ffffff",
-                  textTransform: "uppercase"
-                }}
-              >
-                {item.name}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  textAlign: "center",
-                  color: "#ffffff",
-                  fontWeight: "bold"
-                }}
-              >
-                {item.count}
-              </Text>
-            </View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        marginTop: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20
+      }}
+    >
+      {items.map((item, i) => (
+        <View
+          style={{
+            ...styles.item,
+            ...{ backgroundColor: item.backgroundColor }
+          }}
+          key={i}
+        >
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#ffffff",
+                textTransform: "uppercase"
+              }}
+            >
+              {item.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: 14,
+                textAlign: "center",
+                color: "#ffffff",
+                fontWeight: "bold"
+              }}
+            >
+              {item.count}
+            </Text>
           </View>
-        ))}
-        <View style={styles.cameraContainer}>
-          <Image
-            source={require("../assets/camera.png")}
-            style={styles.image}
-          />
         </View>
+      ))}
+      <View style={styles.cameraContainer}>
+        <Image source={require("../assets/camera.png")} style={styles.image} />
       </View>
-    </>
+    </View>
   );
 };
 
