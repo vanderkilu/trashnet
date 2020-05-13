@@ -5,6 +5,8 @@ import * as Permissions from "expo-permissions";
 
 const CameraView: React.FC<{}> = () => {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [cameraRef, setCameraRef] = useState<Camera | null>(null);
+  const [photo, setPhoto] = useState();
   const type = Camera.Constants.Type.back;
   useEffect(() => {
     (async () => {
@@ -12,6 +14,14 @@ const CameraView: React.FC<{}> = () => {
       setHasPermission(status === "granted");
     })();
   }, []);
+
+  const takeShot = async () => {
+    if (cameraRef) {
+      const photo = await cameraRef.takePictureAsync();
+      console.log(photo);
+      setPhoto(photo);
+    }
+  };
 
   if (hasPermission === null) return <View />;
   if (hasPermission === false)
@@ -25,9 +35,10 @@ const CameraView: React.FC<{}> = () => {
       <Camera
         style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
         type={type}
+        ref={ref => setCameraRef(ref)}
       >
         <View style={{ alignSelf: "flex-end" }}>
-          <TouchableOpacity style={{ alignSelf: "center" }}>
+          <TouchableOpacity style={{ alignSelf: "center" }} onPress={takeShot}>
             <View
               style={{
                 borderWidth: 5,
