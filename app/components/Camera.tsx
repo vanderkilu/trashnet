@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
+import APIService from "../api";
 
 const CameraView: React.FC<{}> = () => {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
@@ -19,9 +20,10 @@ const CameraView: React.FC<{}> = () => {
 
   const takeShot = async () => {
     if (cameraRef) {
-      const photo = await cameraRef.takePictureAsync();
+      const photo = await cameraRef.takePictureAsync({ skipProcessing: true });
       setPhoto(photo);
       setIsCameraMode(false);
+      const response = await APIService.post(photo);
     }
   };
 
