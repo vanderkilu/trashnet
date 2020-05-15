@@ -111,8 +111,9 @@ const CameraView: React.FC<{}> = () => {
             >
               <Text
                 style={{
-                  fontSize: 30,
-                  color: "#a2edff"
+                  fontSize: 40,
+                  color: "#000000",
+                  textTransform: "uppercase"
                 }}
               >
                 {prediction}

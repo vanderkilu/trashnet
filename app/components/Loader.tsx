@@ -4,7 +4,7 @@ import { View, StyleSheet, ActivityIndicator } from "react-native";
 const Loader: React.FC<{}> = () => {
   return (
     <View style={[styles.container, styles.horizontal]}>
-      <ActivityIndicator size="large" color="#a2edff" />
+      <ActivityIndicator size="large" color="#000000" />
     </View>
   );
 };
